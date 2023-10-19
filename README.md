@@ -1,3 +1,3 @@
 # CommunityDetection
 
-## [Colab link](https://colab.research.google.com/drive/1holGO29C_pZRnllG_rWpo3VHUztGIexX?usp=sharing)
+## [Colab link](https://colab.research.google.com/drive/1zYPTSvn2fQf4sHgWxfgmIHB-gKGdjXd0?usp=sharing)
