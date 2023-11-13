@@ -102,11 +102,11 @@ _Figure 2.1 Reading the dataset from the URL_
 
 We can see the first and last five nodes of the Target Dataset in the table below to ensure that the dataset was correctly imported.
 
-![](RackMultipart20231113-1-7h2hcm_html_d356bd4715582d55.png)
+![Picture2](Images/Picture2.png)
 
 _Figure 2.2 Showing the first 5 items of the dataset_
 
-![](RackMultipart20231113-1-7h2hcm_html_10c22fe3e3ce9f77.png)
+![Picture3](Images/Picture3.png)
 
 _Figure 2.3 Showing the last 5 items of the dataset_
 
@@ -128,19 +128,19 @@ To gain a deeper understanding of the dataset, we perform a feature frequency an
 
 We begin our analysis by identifying and exploring the top features in the dataset.
 
-![](RackMultipart20231113-1-7h2hcm_html_b846b2ef1ff7d49e.png)
+![Picture4](Images/Picture4.png)
 
 _Figure 2.4 Code snippet to determine the ten most frequently occurring features_
 
 A data frame named _'top_features_df'_ is created to visualize the top features and their corresponding counts. The data frame is sorted to present the most frequently occurring features first.
 
-![](RackMultipart20231113-1-7h2hcm_html_31590395e8d22f8c.png)
+![Picture5](Images/Picture5.png)
 
 _Figure 2.5 Code snippet to create a data frame to visualize the ten most frequently occurring features_
 
 To provide a clear visual representation of the top features and their counts, we generate a heatmap. This heatmap showcases the frequency of these features using a color scale.
 
-![](RackMultipart20231113-1-7h2hcm_html_156b6d2a25a86eba.png)
+![Picture6](Images/Picture6.png)
 
 _Figure 2.6 Heatmap to show the ten most occurring features in the dataset_
 
@@ -148,7 +148,7 @@ _Figure 2.6 Heatmap to show the ten most occurring features in the dataset_
 
 The process of data encoding plays a pivotal role in preparing our GitHub dataset for effective utilization in machine learning and deep learning models. The primary goal of data encoding is to convert the raw dataset into a structured and standardized format, ensuring its compatibility with machine learning algorithms. Here is an overview of the data encoding process in our project:
 
-![](RackMultipart20231113-1-7h2hcm_html_3e41820714db09ae.png)
+![Picture7](Images/Picture7.png)
 
 _Figure 2.7 Code Snippet showing the encoding of the dataset_
 
@@ -172,13 +172,13 @@ Given the potentially extensive list of features associated with each node and t
 
 By executing the code snippet below, we can create the sparse feature matrix of the first 100 nodes along with the first 550 features.
 
-![](RackMultipart20231113-1-7h2hcm_html_536605d70595b9a8.png)
+![Picture8](Images/Picture8.png)
 
 _Figure 2.8 Code Snippet showing how to plot the sparse feature matrix_
 
 Since we cannot fit all 4005 features in the window, we are showing the first 550 features of the first 100 nodes by passing the value to the encoded function which will return a sparse matrix.
 
-![](RackMultipart20231113-1-7h2hcm_html_4f41156252d9252d.png)
+![Picture9](Images/Picture9.png)
 
 _Figure 2.9 Showing Sparse Feature Matrix of the first 550 features of the first 100 nodes_
 
@@ -188,7 +188,7 @@ _Figure 2.9 Showing Sparse Feature Matrix of the first 550 features of the first
 
 One of the foundational steps in our project involves the construction of a graph that represents the GitHub developer network. This graph is essential for modeling the relationships between developers and for conducting various graph-based deep-learning tasks.
 
-![](RackMultipart20231113-1-7h2hcm_html_8d2faf740a6472ac.png)
+![Picture10](Images/Picture10.png)
 
 _Figure 2.10 Code snippet showing how to construct a graph_
 
@@ -210,7 +210,7 @@ For efficiency and visualization purposes, we offer a "light" version of the gra
 
 To visualize the constructed graph, we employ the _draw_graph_ function, which converts the PyTorch Geometric _'Data'_ object into a NetworkX graph and uses various visualization settings for an informative representation. The graph visualization helps us understand the relationships and community structures within the GitHub developer network.
 
-![](RackMultipart20231113-1-7h2hcm_html_1f893a7e0fd030d2.png)
+![Picture11](Images/Picture11.png)
 
 _Figure 2.11 Connections between 55 different labeled nodes in the graph_
 
@@ -228,7 +228,7 @@ Graph Neural Networks (GNNs) are a class of deep learning models designed for an
 
 In a graph, nodes represent entities, and edges represent connections or relationships. GCNs employ a message-passing mechanism, iteratively propagating and aggregating information from neighboring nodes. This process occurs over multiple layers, enabling GCNs to capture intricate, multi-hop relationships within the graph. This versatility allows GCNs to excel in various tasks, such as node classification, where the final layer's features enable predictions or classifications for each node. GCNs are an essential tool in graph-based machine learning and deep learning, making them valuable for understanding and harnessing the structure of diverse data in a connected world.
 
-![](RackMultipart20231113-1-7h2hcm_html_8436a674dcff7295.png)
+![Picture12](Images/Picture12.png)
 
 _Figure 3.1 Code snippet showing the SocialGNN model_
 
@@ -242,19 +242,19 @@ The _`train_social`_ function is a complete training framework for Graph Neural 
 
 During training, the _`train_social`_ function tracks and records critical training metrics, such as loss and accuracy, on different datasets. It evaluates and updates the model, selects the best-performing one, and visualizes the training progress through informative plots. This functionality simplifies the training process for GNN models, making it a valuable tool for tasks like node classification or graph-based learning where model evaluation and training dynamics are of utmost importance.
 
-![](RackMultipart20231113-1-7h2hcm_html_68d3586246b16db8.png)
+![Picture13](Images/Picture13.png)
 
 _Figure 3.2 Code snippet showing the train_social function_
 
 The `_masked\_loss`\_ function calculates a specialized loss for graph-based tasks. It employs a binary mask to assign different weights to data points, focusing on the relevant portions of the graph. This weighted loss measures how well the model's predictions match the ground truth labels, emphasizing data points specified by the mask. It's a vital tool for ensuring the model's attention is directed to the graph elements that matter most in applications where not all nodes or edges are equally significant.
 
-![](RackMultipart20231113-1-7h2hcm_html_c25c88e397ea6060.png)
+![Picture14](Images/Picture14.png)
 
 _Figure 3.3 Code snippet showing the masked_loss function._
 
 The _`masked_accuracy`_ function is a valuable tool for assessing how well our model is performing on important tasks within our data. It employs a mask to identify and emphasize specific data points, ensuring that accurate measurements prioritize the essential elements. By comparing the model's predictions to the true labels and delivering an accuracy score for the highlighted data, it quantifies the model's success in a way that is meaningful and relevant to our specific goals.
 
-![](RackMultipart20231113-1-7h2hcm_html_112c7aacd31ada4b.png)
+![Picture15](Images/Picture15.png)
 
 _Figure 3.4 Code snippet showing the masked_accuracy function_
 
@@ -264,15 +264,15 @@ In our GNN training journey, we employed the SocialGNN model, a two-layer Graph 
 
 The first set of results, observed at Epoch 50, provides insights into the model's evolving performance. The Train Loss and Accuracy metrics showcase how well the model is learning from the data. Simultaneously, the Validation and Test Accuracy metrics offer glimpses into its proficiency in making accurate predictions.
 
-![](RackMultipart20231113-1-7h2hcm_html_57bc724852f1de9e.png)
+![Picture16](Images/Picture16.png)
 
-![](RackMultipart20231113-1-7h2hcm_html_8e072027411715e0.png)
+![Picture17](Images/Picture17.png)
 
 As we extended the training to Epoch 100, the second set of results unfolded, shedding light on the continued learning process. Adjustments in the learning rate and the number of epochs were made to fine-tune the model's performance. The dynamic trends in Loss and Accuracy, graphically represented, illustrate the evolving capabilities of our GNN.
 
-![](RackMultipart20231113-1-7h2hcm_html_92a41f4aae1cc8c0.png)
+![Picture18](Images/Picture18.png)
 
-![](RackMultipart20231113-1-7h2hcm_html_4979f3bac3082e31.png)
+![Picture19](Images/Picture19.png)
 
 Throughout this analysis, the learning rate schedule emerges as a critical factor in adapting the model's learning rate over time. This dynamic adjustment contributes to the optimization of the model's convergence, enhancing its ability to capture and understand the intricate social relationships encoded in the dataset. In summary, this comprehensive analysis and visual representation offer a detailed narrative of the GNN training process.
 
@@ -298,7 +298,7 @@ The training of the Naive Bayes model occurs within a 4-fold cross-validation lo
 
 - The confusion matrix is also computed for each fold.
 
-![](RackMultipart20231113-1-7h2hcm_html_7841d4d77628f004.png)
+![Picture20](Images/Picture20.png)
 
 _Figure 3.5 Code snippet showing the Naive Bayes model_
 
@@ -306,19 +306,19 @@ _Figure 3.5 Code snippet showing the Naive Bayes model_
 
 The results are printed for each iteration of the cross-validation, including the accuracy of the model on the test data for each fold. After all iterations are complete, the average accuracy is calculated and printed.
 
-![](RackMultipart20231113-1-7h2hcm_html_5565ca9c4e980259.png)
+![Picture21](Images/Picture21.png)
 
 _Figure 3.6 Showing the accuracy in every iteration and average accuracy_
 
 Furthermore, the average confusion matrix is computed and displayed as a heatmap. The confusion matrix provides insights into the model's performance by showing the number of true positives, true negatives, false positives, and false negatives. The heatmap visualization is used to make it more interpretable.
 
-![](RackMultipart20231113-1-7h2hcm_html_23c1b12022e5bded.png)
+![Picture22](Images/Picture22.png)
 
 _Figure 3.7 Showing the confusion matrix for the Test Data_
 
 For visualizing how well our Naive Bayes model handled classifying "Web" and "ML" labels. The blue bars show the actual counts in our test data, while the green bars display our model's predictions. It's like comparing player stats – we can quickly see where our model did well and where it might have stumbled. Titled "Actual Labels VS Predicted Labels - Naive Bayes," this visual snapshot adds an extra layer to our analysis, making it easy to understand the real-world impact of our model's performance.
 
-![](RackMultipart20231113-1-7h2hcm_html_749eb3be17102860.png)
+![Picture23](Images/Picture23.png)
 
 _Figure 3.8 Showing the Actual Labels VS Predicted Labels_
 
@@ -330,7 +330,7 @@ The final output includes the average accuracy of the Naive Bayes model which co
 
 This logistic regression model is designed for binary classification tasks and aims to predict the target variable based on the features in the dataset. The choice of parameters, such as L1 regularization and balanced class weights, suggests an attempt to handle potential imbalances in the dataset.
 
-![](RackMultipart20231113-1-7h2hcm_html_6dbb3baf66a87c1f.png)
+![Picture24](Images/Picture24.png)
 
 _Figure 3.9 Code snippet showing the logistic regression model_
 
@@ -354,17 +354,17 @@ The training of the logistic regression model involves 4-fold cross-validation u
 
 The average accuracy of the logistic regression model across the 4 folds is calculated and printed. Additionally, the average confusion matrix is computed and displayed using a heatmap. The confusion matrix provides insights into the model's performance, showing the number of true positives, true negatives, false positives, and false negatives.
 
-![](RackMultipart20231113-1-7h2hcm_html_18686502db6293de.png)
+![Picture25](Images/Picture25.png)
 
 _Figure 3.10 Showing the accuracies of the logistic regression model_
 
-![](RackMultipart20231113-1-7h2hcm_html_261ad4026253fa8a.png)
+![Picture26](Images/Picture26.png)
 
 _Figure 3.11 Showing the confusion matrix of the logistic regression model_
 
 A bar chart is created to visualize the counts of actual and predicted labels, distinguishing between Web and ML (Machine Learning) classes. The chart includes counts for actual Web and ML labels as well as counts for predicted Web and ML labels. This visualization helps to assess how well the model is performing in classifying instances from both classes.
 
-![](RackMultipart20231113-1-7h2hcm_html_222febc2a8e040f9.png)
+![Picture27](Images/Picture27.png)
 
 _Figure 3.12 Showing the Actual Labels vs. predicted Labels of the logistic regression model_
 
@@ -398,7 +398,7 @@ In conclusion, the LR model's success suggests that, given the dataset's charact
 
 # Conclusion
 
-![](RackMultipart20231113-1-7h2hcm_html_aadb4268fd3d0a4e.png)
+![Picture28](Images/Picture28.png)
 
 _Figure 5.1 Showing the accuracies of three model_
 
