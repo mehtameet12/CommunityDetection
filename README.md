@@ -2,7 +2,6 @@
 
 ## [Colab link](https://colab.research.google.com/drive/1Tmwrbvc10WNSuJtS-QBVGXuZ1K4jAMS6?usp=sharing)
 
-
 **Community detection using GNN**
 
 Authors:
@@ -10,7 +9,6 @@ Authors:
 **Meet Mehta: 300261159**
 
 **Rakshita Mathur: 300215340**
-
 
 [**1. Introduction 3**](#_v6pns81d1km4)
 
@@ -76,7 +74,6 @@ Authors:
 
 [**6. Resources**](#_ag03zlgcd4zf)[22](#_ag03zlgcd4zf)
 
-
 # Introduction
 
 In the ever-evolving software development landscape, understanding the diverse communities and roles within the developer ecosystem is critical. GitHub, as a prominent platform for collaborative software development, provides extensive data that can shed light on the characteristics and preferences of its users. This project performs a social network analysis by utilizing a large dataset of GitHub developers, collected from the public API in June 2019.
@@ -89,9 +86,7 @@ Additionally, we construct and evaluate three different models: the Graph Neural
 
 This report comprehensively outlines the key stages of our project, spanning from data collection and preprocessing to model development, analysis, and comparison across the three models.
 
-
 # Dataset
-
 
 ## Importing the Dataset
 
@@ -101,7 +96,7 @@ The dataset is hosted on a public GitHub repository, and we have utilized Python
 
 By executing the code shown in the notebook, we successfully retrieved the dataset from the specified GitHub URLs.
 
-![](RackMultipart20231113-1-7h2hcm_html_e89d97cd32ade4e.png)
+![image1](RackMultipart20231113-1-7h2hcm_html_e89d97cd32ade4e.png)
 
 _Figure 2.1 Reading the dataset from the URL_
 
@@ -117,19 +112,17 @@ _Figure 2.3 Showing the last 5 items of the dataset_
 
 The following steps in our project include data preprocessing, model development, and thorough analysis as we progress toward our objectives.
 
-
 ## Preprocessing the Dataset
 
 To prepare our GitHub dataset for deep learning models, several preprocessing steps are essential to enhance data quality and usability.
 
 Feature Extraction:
 
-In this phase, we extract and consolidate features from all 37,700 nodes in the dataset. A list named feats is employed to concatenate and store individual features. Simultaneously, we maintain another list, feat\_counts, which records the length of features (indicating the number of features) associated with each node. This feature extraction process lays the foundation for subsequent data analysis and model development.
+In this phase, we extract and consolidate features from all 37,700 nodes in the dataset. A list named feats is employed to concatenate and store individual features. Simultaneously, we maintain another list, feat_counts, which records the length of features (indicating the number of features) associated with each node. This feature extraction process lays the foundation for subsequent data analysis and model development.
 
 Feature Frequency Analysis:
 
 To gain a deeper understanding of the dataset, we perform a feature frequency analysis. This analysis involves counting the frequency of each feature and storing the results in a dictionary called a counter. By examining the distribution of features, we can identify patterns and potentially influential features that will inform our model development.
-
 
 ## Dataset Analysis
 
@@ -139,7 +132,7 @@ We begin our analysis by identifying and exploring the top features in the datas
 
 _Figure 2.4 Code snippet to determine the ten most frequently occurring features_
 
-A data frame named _'top\_features\_df'_ is created to visualize the top features and their corresponding counts. The data frame is sorted to present the most frequently occurring features first.
+A data frame named _'top_features_df'_ is created to visualize the top features and their corresponding counts. The data frame is sorted to present the most frequently occurring features first.
 
 ![](RackMultipart20231113-1-7h2hcm_html_31590395e8d22f8c.png)
 
@@ -151,7 +144,6 @@ To provide a clear visual representation of the top features and their counts, w
 
 _Figure 2.6 Heatmap to show the ten most occurring features in the dataset_
 
-
 ## Data Encoding
 
 The process of data encoding plays a pivotal role in preparing our GitHub dataset for effective utilization in machine learning and deep learning models. The primary goal of data encoding is to convert the raw dataset into a structured and standardized format, ensuring its compatibility with machine learning algorithms. Here is an overview of the data encoding process in our project:
@@ -160,13 +152,11 @@ The process of data encoding plays a pivotal role in preparing our GitHub datase
 
 _Figure 2.7 Code Snippet showing the encoding of the dataset_
 
-
 ### One-Hot Encoding for Feature Representation
 
 Our dataset contains a diverse range of features such as location, repositories starred, employer, and email address associated with each node in the dataset. These features are heterogeneous and have different representations, making it essential to transform them into a unified format for analysis and model training. To achieve this, we employ one-hot encoding.
 
 One-hot encoding is a technique where each feature is represented as a binary vector, where a value of 1 indicates the presence of the feature for the respective node, and 0 signifies its absence. This binary representation allows for a consistent and standardized format across all features and nodes.
-
 
 ### Creating Data Structures for Encoding
 
@@ -174,7 +164,7 @@ The data encoding process involves two critical data structures:
 
 Data Encoded Dictionary
 
-For each of the nodes in our dataset, we create a dictionary, _data\_encoded_, which stores the one-hot encoded features. Each entry in the dictionary corresponds to a node, and its value is a list of binary values representing the presence or absence of each feature.
+For each of the nodes in our dataset, we create a dictionary, _data_encoded_, which stores the one-hot encoded features. Each entry in the dictionary corresponds to a node, and its value is a list of binary values representing the presence or absence of each feature.
 
 Sparse Feature Matrix
 
@@ -194,7 +184,6 @@ _Figure 2.9 Showing Sparse Feature Matrix of the first 550 features of the first
 
 ##
 
-
 ## Constructing a Graph
 
 One of the foundational steps in our project involves the construction of a graph that represents the GitHub developer network. This graph is essential for modeling the relationships between developers and for conducting various graph-based deep-learning tasks.
@@ -203,27 +192,23 @@ One of the foundational steps in our project involves the construction of a grap
 
 _Figure 2.10 Code snippet showing how to construct a graph_
 
-
 ### Node Features and Labels
 
-We extract the node features from the input data, which represents various characteristics of each developer in our dataset. These features are converted into a tensor. Additionally, we extract the node labels from the '_target\_df_' data frame, representing whether a developer is a Machine Learning Developer or a Web Developer.
-
+We extract the node features from the input data, which represents various characteristics of each developer in our dataset. These features are converted into a tensor. Additionally, we extract the node labels from the '_target_df_' data frame, representing whether a developer is a Machine Learning Developer or a Web Developer.
 
 ### Edge Data
 
 We prepare the edge data from the _'edges'_ variable, which indicates mutual follower relationships between developers. The edges are represented as tensors, and we create reverse edges to capture both directions of relationships.
 
-
 ### Creating the Graph
 
 We create a PyTorch Geometric _'Data'_ object that encapsulates the graph. This object includes node features, labels, and edge information, which is crucial for subsequent graph-based deep-learning tasks.
-
 
 ### Light Version of the Graph
 
 For efficiency and visualization purposes, we offer a "light" version of the graph. This version reduces the dimensionality of the graph and is suitable for visualization.
 
-To visualize the constructed graph, we employ the _draw\_graph_ function, which converts the PyTorch Geometric _'Data'_ object into a NetworkX graph and uses various visualization settings for an informative representation. The graph visualization helps us understand the relationships and community structures within the GitHub developer network.
+To visualize the constructed graph, we employ the _draw_graph_ function, which converts the PyTorch Geometric _'Data'_ object into a NetworkX graph and uses various visualization settings for an informative representation. The graph visualization helps us understand the relationships and community structures within the GitHub developer network.
 
 ![](RackMultipart20231113-1-7h2hcm_html_1f893a7e0fd030d2.png)
 
@@ -233,13 +218,10 @@ In the labeled graph above, read nodes represent Web Developers whereas grey nod
 
 #
 
-
 # Building models
-
 
 ## GNN Model
 
-  
 ### Description of the GNN Model
 
 Graph Neural Networks (GNNs) are a class of deep learning models designed for analyzing graph-structured data, and among them, Graph Convolutional Networks (GCNs) have emerged as a powerful and widely used subclass. These models find extensive applications in various domains, including social network analysis, recommendation systems, and bioinformatics, owing to their capability to effectively capture and model complex relationships within graph data.
@@ -250,11 +232,10 @@ In a graph, nodes represent entities, and edges represent connections or relatio
 
 _Figure 3.1 Code snippet showing the SocialGNN model_
 
-In the context of implementing GCNs, the provided code defines a neural network module called `_SocialGNN_`. This module is designed to work with graph data and uses the GCN architecture. It consists of two GCN layers, _`self.conv1`_ and _`self.conv2_`. The first layer, _`self.conv1`_, takes the input node features and performs message-passing operations using the edge index information. It produces an intermediate representation with _'f'_ output features and introduces non-linearity through the ReLU activation function. The second layer, _`self.conv2`_, further refines the features and reduces them to just two dimensions.
+In the context of implementing GCNs, the provided code defines a neural network module called `_SocialGNN_`. This module is designed to work with graph data and uses the GCN architecture. It consists of two GCN layers, _`self.conv1`_ and _`self.conv2_`. The first layer, _`self.conv1`_, takes the input node features and performs message-passing operations using the edge index information. It produces an intermediate representation with _'f'_ output features and introduces non-linearity through the ReLU activation function. The second layer, _`self.conv2`\_, further refines the features and reduces them to just two dimensions.
 
 To apply this model, the code includes a _`forward`_ method. It first extracts node features and edge connectivity information from the input data and proceeds to apply the two GCN layers iteratively. The result is the processed node features, representing the graph's structure and attribute-related information. This architecture is particularly well-suited for graph-related tasks where understanding and predicting relationships and properties within a graph is essential, and it can be adapted for a wide range of applications.
 
-  
 ### Training the SocialGNN model
 
 The _`train_social`_ function is a complete training framework for Graph Neural Network (GNN) models on graph-structured data. It sets up and optimizes the model with an Adam optimizer and a learning rate scheduler, monitoring training and evaluation metrics. Within a defined number of epochs, it iteratively updates the model, records loss and accuracy metrics, and dynamically adjusts the learning rate. This function provides a holistic view of the model's performance across training, validation, and test data, ensuring efficient model development and assessment.
@@ -263,21 +244,20 @@ During training, the _`train_social`_ function tracks and records critical train
 
 ![](RackMultipart20231113-1-7h2hcm_html_68d3586246b16db8.png)
 
-_Figure 3.2 Code snippet showing the train\_social function_
+_Figure 3.2 Code snippet showing the train_social function_
 
-The `_masked\_loss`_ function calculates a specialized loss for graph-based tasks. It employs a binary mask to assign different weights to data points, focusing on the relevant portions of the graph. This weighted loss measures how well the model's predictions match the ground truth labels, emphasizing data points specified by the mask. It's a vital tool for ensuring the model's attention is directed to the graph elements that matter most in applications where not all nodes or edges are equally significant.
+The `_masked\_loss`\_ function calculates a specialized loss for graph-based tasks. It employs a binary mask to assign different weights to data points, focusing on the relevant portions of the graph. This weighted loss measures how well the model's predictions match the ground truth labels, emphasizing data points specified by the mask. It's a vital tool for ensuring the model's attention is directed to the graph elements that matter most in applications where not all nodes or edges are equally significant.
 
 ![](RackMultipart20231113-1-7h2hcm_html_c25c88e397ea6060.png)
 
-_Figure 3.3 Code snippet showing the masked\_loss function._
+_Figure 3.3 Code snippet showing the masked_loss function._
 
 The _`masked_accuracy`_ function is a valuable tool for assessing how well our model is performing on important tasks within our data. It employs a mask to identify and emphasize specific data points, ensuring that accurate measurements prioritize the essential elements. By comparing the model's predictions to the true labels and delivering an accuracy score for the highlighted data, it quantifies the model's success in a way that is meaningful and relevant to our specific goals.
 
 ![](RackMultipart20231113-1-7h2hcm_html_112c7aacd31ada4b.png)
 
-_Figure 3.4 Code snippet showing the masked\_accuracy function_
+_Figure 3.4 Code snippet showing the masked_accuracy function_
 
-  
 ### Results and Analysis
 
 In our GNN training journey, we employed the SocialGNN model, a two-layer Graph Convolutional Network (GCN), to grasp the intricate social dynamics within our dataset. The training process spanned epochs, leveraging a learning rate scheduler to enhance convergence. We closely monitored two key metrics—Loss, indicating the model's ability to minimize prediction errors, and Accuracy, gauging its correctness in classifying data points.
@@ -296,15 +276,12 @@ As we extended the training to Epoch 100, the second set of results unfolded, sh
 
 Throughout this analysis, the learning rate schedule emerges as a critical factor in adapting the model's learning rate over time. This dynamic adjustment contributes to the optimization of the model's convergence, enhancing its ability to capture and understand the intricate social relationships encoded in the dataset. In summary, this comprehensive analysis and visual representation offer a detailed narrative of the GNN training process.
 
-
 ## Naive Bayes
 
-  
 ### Description of the Naive Bayes Model
 
 In an alternate way, we used a Naive Bayes classifier, specifically the Gaussian Naive Bayes (GaussianNB). The Naive Bayes algorithm is a probabilistic classification algorithm based on Bayes' theorem. The "Gaussian" variant assumes that the features follow a Gaussian distribution. It is particularly suitable for continuous data.
 
-  
 ### Training the Naive Bayes Model
 
 The training of the Naive Bayes model occurs within a 4-fold cross-validation loop. The dataset is split into four subsets, and the model is trained and evaluated iteratively. The training process involves the following steps:
@@ -317,7 +294,7 @@ The training of the Naive Bayes model occurs within a 4-fold cross-validation lo
 
 - For each fold, a Gaussian Naive Bayes classifier is instantiated _(`naive_bayes_classifier = GaussianNB()`)_ and trained using the training data _(`X_train, y_train`)_.
 
-- Predictions are made on the test data _(`X_test`)_, and accuracy is calculated using _`accuracy\_score_`.
+- Predictions are made on the test data _(`X_test`)_, and accuracy is calculated using _`accuracy_score_`.
 
 - The confusion matrix is also computed for each fold.
 
@@ -325,7 +302,6 @@ The training of the Naive Bayes model occurs within a 4-fold cross-validation lo
 
 _Figure 3.5 Code snippet showing the Naive Bayes model_
 
-  
 ### Results and Analysis
 
 The results are printed for each iteration of the cross-validation, including the accuracy of the model on the test data for each fold. After all iterations are complete, the average accuracy is calculated and printed.
@@ -348,10 +324,8 @@ _Figure 3.8 Showing the Actual Labels VS Predicted Labels_
 
 The final output includes the average accuracy of the Naive Bayes model which comes out to 44.45% and a visual representation of the average confusion matrix. This information is valuable for assessing the overall performance and behavior of the model across different folds of the dataset.
 
-
 ## Logistic Regression
 
-  
 ### Description of the Logistic Regression Model
 
 This logistic regression model is designed for binary classification tasks and aims to predict the target variable based on the features in the dataset. The choice of parameters, such as L1 regularization and balanced class weights, suggests an attempt to handle potential imbalances in the dataset.
@@ -372,12 +346,10 @@ The logistic regression model used in this code is configured with the following
 
 - Penalty type: L1 regularization (_`penalty='l1'`_)
 
-  
 ### Training of the Logistic Regression Model
 
 The training of the logistic regression model involves 4-fold cross-validation using the KFold method with shuffling and a random seed for reproducibility. The training set is derived from the transposed feature matrix _(`transposed_df`)_, while the corresponding target variable _(`y`)_ is used for training. The model is trained using the logistic regression algorithm for each fold, and accuracy scores for each iteration are printed.
 
-  
 ### Results and Analysis
 
 The average accuracy of the logistic regression model across the 4 folds is calculated and printed. Additionally, the average confusion matrix is computed and displayed using a heatmap. The confusion matrix provides insights into the model's performance, showing the number of true positives, true negatives, false positives, and false negatives.
@@ -398,16 +370,13 @@ _Figure 3.12 Showing the Actual Labels vs. predicted Labels of the logistic regr
 
 In summary, the logistic regression model is trained and evaluated using cross-validation, and the results are presented in terms of accuracy of 83.42% and confusion matrices, providing a comprehensive understanding of the model's performance on the given dataset.
 
-
 # Comparison of the three models
 
 In our project, we've applied three distinct machine learning models to address the binary node classification task in the GitHub developer network. These models include the Graph Neural Network (GNN), Naive Bayes, and Logistic Regression. Each model offers unique characteristics and approaches to the problem, and in this section, we evaluate and compare their performance.
 
-
 ## Graph Neural Network (GNN)
 
 The Graph Neural Network, specifically the Social GNN, is a deep learning model tailored for graph-structured data. It leverages the power of message passing and graph convolution to capture intricate relationships among nodes in the GitHub developer network. After extensive training, the GNN produces the most accurate predictions among the three models. As listed above the average accuracy of the GNN model comes to be 87.82%. The average accuracy was recorded after modifying the learning rate and epoch values to 0.01 and 100 from 0.1 and 50 respectively.
-
 
 ## Naive Bayes
 
@@ -419,7 +388,6 @@ Furthermore, our dataset exhibits a notable imbalance, primarily favoring Web De
 
 To summarize, while Naive Bayes offers simplicity and efficiency, it struggles when confronted with datasets of significant complexity and imbalanced class distributions, as demonstrated in our project.
 
-
 ## Logistic Regression
 
 The Logistic Regression (LR) model achieved a notable accuracy of 83.42%, indicating its effectiveness in predicting whether a user is a Web developer or a Machine Learning developer. The success of LR in this binary classification task can be attributed to its underlying assumptions and the characteristics of the dataset. Logistic Regression assumes a linear relationship between features and the log odds of the target variable, and if the relevant features exhibit a relatively simple linear pattern, LR can perform well.
@@ -428,12 +396,10 @@ The specified hyperparameters, including the use of balanced class weights, sugg
 
 In conclusion, the LR model's success suggests that, given the dataset's characteristics and the task at hand which is similar to binary classification, a linear model like Logistic Regression can provide a reliable and interpretable solution for predicting the user's association with Web development or machine learning.
 
-
 # Conclusion
 
 ![](RackMultipart20231113-1-7h2hcm_html_aadb4268fd3d0a4e.png)
 
 _Figure 5.1 Showing the accuracies of three model_
-
 
 # Resources
