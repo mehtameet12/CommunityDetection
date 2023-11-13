@@ -96,7 +96,7 @@ The dataset is hosted on a public GitHub repository, and we have utilized Python
 
 By executing the code shown in the notebook, we successfully retrieved the dataset from the specified GitHub URLs.
 
-![image1](RackMultipart20231113-1-7h2hcm_html_e89d97cd32ade4e.png)
+![Picture1](Images/Picture1.png)
 
 _Figure 2.1 Reading the dataset from the URL_
 
