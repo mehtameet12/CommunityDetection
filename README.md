@@ -3,21 +3,14 @@
 ## [Colab link](https://colab.research.google.com/drive/1Tmwrbvc10WNSuJtS-QBVGXuZ1K4jAMS6?usp=sharing)
 
 
-**CSI4900 Honors Project**
+**Community detection using GNN**
 
-**Fall 2023**
-
-**Final Report: Community detection using GNN**
-
-Submitted by
+Authors:
 
 **Meet Mehta: 300261159**
 
 **Rakshita Mathur: 300215340**
 
-Supervisor
-
-**Amiya Nayak**
 
 [**1. Introduction 3**](#_v6pns81d1km4)
 
